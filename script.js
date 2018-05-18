@@ -18,7 +18,7 @@ google.charts.setOnLoadCallback(drawStudyBar);
 google.charts.setOnLoadCallback(drawDonationChart);
 
 function showTimelineChart(){
-  // todo: validate that it's a legit color string
+  // todo: validate that it's a legit color string 
   // get color from input, pass to draw chart function
   let color = document.getElementById("color").value
   drawStudyTimeline(color)
