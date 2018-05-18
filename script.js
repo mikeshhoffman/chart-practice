@@ -1,8 +1,8 @@
-console.log("let's build some charts!")
+  console.log("let's build some charts!")
 
 
 // Load the Visualization API and the corechart package.
-google.charts.load('current', {'packages':['corechart']});
+google.charts.load('current', {'packages':['corechart', 'bar']});
 
 // for 2nd chart, 
 // 1. Set a callback for it.
@@ -35,7 +35,7 @@ function drawChart1() {
   // Set chart options
   var options = {'title':'What Kinds of Pizza I Ate Last Night',
                  'width':500,
-                 'height':500,
+                 'height':350,
                 'legend':'left',
                 'is3D':true};
 
@@ -46,25 +46,25 @@ function drawChart1() {
 
 function drawChart2() {
 
-  // Create the data table.
-  var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Company');
-    data.addColumn('number', 'Projects');
-    data.addRows([
-      ['Microsoft', 19],
-      ['IBM', 6],
-      ['Wizards of the Coast', 2],
-      ['Amazon', 1]
-    ]);
+  var data = google.visualization.arrayToDataTable([
+    ['Topping', 'Slices'],
+    ['Pepperoni', 2],
+    ['Tomato', 1],
+    ['Olives', 1],
+    ['Basil', 3],
+    ['Asiago', 1]
+  ]);
 
-  // Set chart options
-  var options = {'title':'How Many Projects I Did',
-                 'width':400,
-                 'height':300,
-                 'pieStartAngle': 115,
-                };
+  var options = {
+    chart: {
+      title: 'What Kinds of Pizza I Ate Last Night',
+    },
+   'width':800,
+   'height':300,
+    bars: 'horizontal' // Required for Material Bar Charts.
+  };
 
-  // Instantiate and draw our chart, passing in some options.
-  var chart = new google.visualization.PieChart(document.getElementById('chart_div2'));
-  chart.draw(data, options);
+  var chart = new google.charts.Bar(document.getElementById('chart_div2'));
+
+  chart.draw(data, google.charts.Bar.convertOptions(options));
 }
