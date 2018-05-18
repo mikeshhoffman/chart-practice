@@ -13,9 +13,13 @@ google.charts.load('current', {'packages':['corechart', 'bar', 'timeline']});
 // Set a callback to run when the Google Visualization API is loaded.
 //google.charts.setOnLoadCallback(drawChart1);
 //google.charts.setOnLoadCallback(drawChart2);
-google.charts.setOnLoadCallback(drawStudyTimeline);
+//google.charts.setOnLoadCallback(drawStudyTimeline);
 google.charts.setOnLoadCallback(drawStudyBar);
 google.charts.setOnLoadCallback(drawDonationChart);
+
+function showTimelineChart(){
+  drawStudyTimeline()
+}
 
 function drawStudyTimeline(){
   var container = document.getElementById('study-timeline');
