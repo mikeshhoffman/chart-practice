@@ -18,10 +18,13 @@ google.charts.setOnLoadCallback(drawStudyBar);
 google.charts.setOnLoadCallback(drawDonationChart);
 
 function showTimelineChart(){
-  drawStudyTimeline()
+  // todo: validate that it's a legit color string
+  // get color from input, pass to draw chart function
+  let color = document.getElementById("color").value
+  drawStudyTimeline(color)
 }
 
-function drawStudyTimeline(){
+function drawStudyTimeline(barColor){
   var container = document.getElementById('study-timeline');
   var chart = new google.visualization.Timeline(container);
   var dataTable = new google.visualization.DataTable();
@@ -39,8 +42,12 @@ function drawStudyTimeline(){
 //  4. From Sept of 2020 to May of 2022, students will complete twelve courses in their preferred area of study, three per semester.
     [ '12 Mjr Clss', new Date(2020, 8, 1),  new Date(2022, 4, 1) ]
   ]);
+  
+  var options = {
+    'timeline': {'singleColor': barColor}
+  }
 
-  chart.draw(dataTable);
+  chart.draw(dataTable, options);
 }
 
 function drawStudyBar(){
@@ -69,7 +76,7 @@ function drawDonationChart(){
       3: { color: '#BCD18A' }
     },
     pieStartAngle: 85,
-    'backgroundColor.fill': '#0000FF',
+    'backgroundColor': {'fill': 'lightblue'},
     //  'legend': 'top'
   };
 
